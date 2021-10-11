@@ -1,0 +1,67 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Player/Model/Polliwog.dae" type="PackedScene" id=1]
+[ext_resource path="res://Player/Material/Crown.tres" type="Material" id=2]
+[ext_resource path="res://Player/Material/Back.tres" type="Material" id=3]
+[ext_resource path="res://Player/Material/Stomach.tres" type="Material" id=4]
+[ext_resource path="res://Player/player.gd" type="Script" id=5]
+[ext_resource path="res://Player/Material/Feet.tres" type="Material" id=6]
+[ext_resource path="res://Player/Material/Face.tres" type="Material" id=7]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "run-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "idle-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=3]
+
+[sub_resource type="AnimationNodeBlendTree" id=4]
+graph_offset = Vector2( 111, 88.75 )
+nodes/Idle/node = SubResource( 1 )
+nodes/Idle/position = Vector2( 240, 240 )
+nodes/Run/node = SubResource( 2 )
+nodes/Run/position = Vector2( 240, 120 )
+nodes/RunIdle/node = SubResource( 3 )
+nodes/RunIdle/position = Vector2( 440, 140 )
+nodes/output/position = Vector2( 620, 160 )
+node_connections = [ "output", 0, "RunIdle", "RunIdle", 0, "Run", "RunIdle", 1, "Idle" ]
+
+[sub_resource type="CapsuleShape" id=5]
+radius = 0.5
+height = 0.5
+
+[node name="Player" instance=ExtResource( 1 )]
+script = ExtResource( 5 )
+max_run_speed = 7.0
+
+[node name="Body" parent="PolliwogKing/Skeleton" index="0"]
+material/0 = ExtResource( 3 )
+material/1 = ExtResource( 4 )
+material/2 = ExtResource( 7 )
+
+[node name="Crown" parent="PolliwogKing/Skeleton" index="1"]
+material/0 = ExtResource( 2 )
+
+[node name="FootL" parent="PolliwogKing/Skeleton" index="2"]
+material/0 = ExtResource( 6 )
+
+[node name="FootR" parent="PolliwogKing/Skeleton" index="3"]
+material/0 = ExtResource( 6 )
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource( 4 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/RunIdle/blend_amount = 0.97
+
+[node name="Tween" type="Tween" parent="." index="3"]
+
+[node name="Collision" type="Node" parent="." index="4"]
+
+[node name="KinematicBody" type="KinematicBody" parent="Collision" index="0"]
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Collision/KinematicBody" index="0"]
+transform = Transform( 1, -0.000184146, 0.000234304, 0.000234212, -0.000553214, -1, 0.000184263, 1, -0.000553175, 0, 0.431, 0 )
+shape = SubResource( 5 )
