@@ -177,7 +177,7 @@ light_energy = 1.23
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="Player"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 2, 2 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 1.25, 2 )
 doppler_tracking = 1
 current = true
 size = 2.15
