@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GrassAlbedo.png-9406de321a0fd092a672bbda1c8754d0.stex"
+path="res://.import/GrassAlbedo.png-d88bb89db8521846af826daf6198b435.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Map/Grass/Model/GrassAlbedo.png"
-dest_files=[ "res://.import/GrassAlbedo.png-9406de321a0fd092a672bbda1c8754d0.stex" ]
+source_file="res://Map/Grass/Material/GrassAlbedo.png"
+dest_files=[ "res://.import/GrassAlbedo.png-d88bb89db8521846af826daf6198b435.stex" ]
 
 [params]
 

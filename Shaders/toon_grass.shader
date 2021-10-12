@@ -1,8 +1,8 @@
 // Toon shader by CaptainProton42: https://godotshaders.com/shader/flexible-toon-shader/
-
 shader_type spatial;
 render_mode cull_disabled;
 
+uniform float wind_strength = 0.015;
 const float PI = 3.1415926536f;
 
 uniform vec4 albedo : hint_color = vec4(1.0f);
@@ -33,18 +33,16 @@ uniform float border_width = 0.01f;
 varying vec3 vertex_pos;
 varying vec3 normal;
 
-uniform float interact_power = 0.5;
-
 void vertex() {
-	VERTEX += vec3(1,0,1)  * interact_power * (1.0 - UV.y) * sin(TIME);
-}
-
-void fragment() {
-	ALBEDO = albedo.rgb * texture(albedo_texture, UV).rgb;
+	VERTEX += vec3(1,0,1)  * wind_strength * (1.0 - UV.y) * sin(TIME);
 }
 
 float split_specular(float specular) {
 	return step(0.5f, specular);
+}
+
+void fragment() {
+	ALBEDO = albedo.rgb * texture(albedo_texture, UV).rgb;
 }
 
 void light() {
