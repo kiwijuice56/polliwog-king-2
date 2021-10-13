@@ -16,8 +16,9 @@ var dir := Vector3(1,-1,0)
 var look_dir := Vector3(1,0,0)
 var spitting := false
 
+var CONDITION_PATH = "parameters/StateMachine/conditions/"
 onready var body = $Collision/KinematicBody
-onready var tongue = $PolliwogKing/Skeleton/Body/Tongue
+onready var tongue = $PolliwogKing/Skeleton/TonguePoint/Tongue
 onready var anim = $AnimationTree
 
 func _ready():
@@ -73,15 +74,15 @@ func animate():
 		$Tween.start()
 	# switches state in animation tree state machine
 	if dir.y == 1.0:
-		anim.set("parameters/StateMachine/conditions/falling", false)
-		anim.set("parameters/StateMachine/conditions/jumping", true)
+		anim.set(CONDITION_PATH + "falling", false)
+		anim.set(CONDITION_PATH + "jumping", true)
 	elif dir.y == -1.0:
-		anim.set("parameters/StateMachine/conditions/jumping", false)
-		anim.set("parameters/StateMachine/conditions/grounded", false)
-		anim.set("parameters/StateMachine/conditions/falling", true)
+		anim.set(CONDITION_PATH + "jumping", false)
+		anim.set(CONDITION_PATH + "grounded", false)
+		anim.set(CONDITION_PATH + "falling", true)
 	if body.is_on_floor():
-		anim.set("parameters/StateMachine/conditions/falling", false)
-		anim.set("parameters/StateMachine/conditions/grounded", true)
+		anim.set(CONDITION_PATH + "falling", false)
+		anim.set(CONDITION_PATH + "grounded", true)
 	anim.set("parameters/StateMachine/BlendTree/x_speed/blend_amount", abs(speed.x/max_run_speed))
 
 func _physics_process(_delta: float):
