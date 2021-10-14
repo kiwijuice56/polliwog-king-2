@@ -32,8 +32,8 @@ func tween_completed(_object: Object, key: NodePath):
 
 func spit():
 	visible = true
-	global_transform.origin.x = (skeleton.global_transform * skeleton.get_bone_global_pose(10)).origin.x
-	global_transform.origin.z = (skeleton.global_transform * skeleton.get_bone_global_pose(10)).origin.z
+	global_transform.origin.x = (skeleton.global_transform * skeleton.get_bone_global_pose(skeleton.find_bone("Tongue"))).origin.x
+	global_transform.origin.z = (skeleton.global_transform * skeleton.get_bone_global_pose(skeleton.find_bone("Tongue"))).origin.z
 	$Tween.stop_all()
 	$Tween.interpolate_property($Tip, "translation:z", $Tip.translation.z, distance, spit_time/2, Tween.TRANS_CUBIC, Tween.EASE_IN)
 	$Tween.interpolate_property($Cylinder, "translation:z", $Cylinder.translation.z, distance/2, spit_time/2, Tween.TRANS_CUBIC, Tween.EASE_IN)
@@ -43,4 +43,4 @@ func spit():
 
 func _process(_delta):
 	if visible:
-		global_transform.origin.y = (skeleton.global_transform * skeleton.get_bone_global_pose(10)).origin.y
+		global_transform.origin.y = (skeleton.global_transform * skeleton.get_bone_global_pose(skeleton.find_bone("Tongue"))).origin.y

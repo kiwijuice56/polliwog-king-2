@@ -60,6 +60,7 @@ current = true
 size = 2.15
 
 [node name="Orange" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.511226, -0.192566, -0.837596, 0.383022, 0.821394, -0.422618, 0.769378, -0.536871, -0.346161, 2.97258, 2.37705, 0 )
 
 [node name="Grass" type="Spatial" parent="."]
 
