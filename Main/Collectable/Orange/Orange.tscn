@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Main/Collectable/Orange/Material/Stem.tres" type="Material" id=1]
+[ext_resource path="res://Main/Collectable/Orange/Material/Orange.tres" type="Material" id=2]
+[ext_resource path="res://Main/Collectable/Orange/Material/Leaf.tres" type="Material" id=3]
+[ext_resource path="res://Main/Collectable/Orange/Model/Orange.dae" type="PackedScene" id=4]
+[ext_resource path="res://Main/Collectable/Orange/orange.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Rotate"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 25, 0, 25 ), Vector3( 25, 360, 25 ) ]
+}
+
+[node name="Orange" instance=ExtResource( 4 )]
+transform = Transform( -0.511226, -0.192566, -0.837596, 0.383022, 0.821394, -0.422618, 0.769378, -0.536871, -0.346161, 0, 0, 0 )
+script = ExtResource( 5 )
+
+[node name="Cylinder" parent="." index="0"]
+material/0 = ExtResource( 1 )
+
+[node name="Plane" parent="." index="1"]
+material/0 = ExtResource( 3 )
+
+[node name="Sphere" parent="." index="2"]
+material/0 = ExtResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="3"]
+autoplay = "Rotate"
+anims/Rotate = SubResource( 1 )

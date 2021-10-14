@@ -10,16 +10,28 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Spatial",
+"class": "Collectable",
+"language": "GDScript",
+"path": "res://Main/Collectable/collectable.gd"
+}, {
+"base": "Collectable",
+"class": "Orange",
+"language": "GDScript",
+"path": "res://Main/Collectable/Orange/orange.gd"
+}, {
+"base": "Spatial",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Player/player.gd"
+"path": "res://Main/Player/player.gd"
 }, {
 "base": "Spatial",
 "class": "Tongue",
 "language": "GDScript",
-"path": "res://Player/tongue.gd"
+"path": "res://Main/Player/Tongue/tongue.gd"
 } ]
 _global_script_class_icons={
+"Collectable": "",
+"Orange": "",
 "Player": "",
 "Tongue": ""
 }
@@ -69,7 +81,10 @@ ui_accept2={
 [layer_names]
 
 2d_physics/layer_1="Player"
+3d_physics/layer_1="Player"
 2d_physics/layer_2="Map"
+3d_physics/layer_2="Map"
+3d_physics/layer_3="Tongue"
 
 [physics]
 
